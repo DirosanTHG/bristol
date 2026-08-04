@@ -4,6 +4,7 @@
     --orange:#E8720C;
     --green:#1E7A34;
     --amber:#B8860B;
+    --purple:#7C3AED;
     --bg:#F1F7FB;
     --card:#FFFFFF;
     --text:#1F2937;
@@ -46,12 +47,14 @@
 
   .legend{
     position:absolute;bottom:16px;left:16px;z-index:900;
-    background:var(--card);border-radius:12px;padding:10px 14px;
+    background:var(--card);border-radius:12px;padding:12px 16px;
     box-shadow:0 4px 16px rgba(20,40,70,.18);
-    font-size:12px;color:var(--muted);line-height:1.9;
-    max-width:200px;
+    font-size:12.5px;color:var(--text);line-height:2;
+    max-width:190px;
   }
-  .legend b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:12.5px;display:block;margin-bottom:2px;}
+  .legend b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:12.5px;display:block;margin-bottom:4px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);}
+  .legend-row{display:flex;align-items:center;gap:8px;}
+  .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
 
   /* Popup styling */
   .leaflet-popup-content-wrapper{border-radius:14px;box-shadow:0 8px 28px rgba(20,40,70,.22);}
@@ -65,6 +68,9 @@
   .pop-badge.paid{background:#FDEEDD;color:var(--orange);}
   .pop-badge.check{background:#FBF1DA;color:var(--amber);}
   .pop-badge.hotel{background:#E7ECF7;color:var(--navy);}
+  .pop-badge.fiesta{background:#FBE2E4;color:#C1272D;}
+  .pop-badge.station{background:#E1F2F4;color:#0E7490;}
+  .pop-badge.food{background:#F0E9FB;color:var(--purple);}
   .pop-note{font-size:12.5px;color:var(--muted);margin:0 0 10px;line-height:1.45;}
   .pop-link{
     display:inline-block;font-size:12.5px;font-weight:600;color:#fff;
@@ -82,6 +88,9 @@
   .custom-pin.paid{background:var(--orange);}
   .custom-pin.check{background:var(--amber);}
   .custom-pin.hotel{background:var(--navy);width:32px;height:32px;font-size:16px;}
+  .custom-pin.fiesta{background:#C1272D;width:32px;height:32px;font-size:16px;}
+  .custom-pin.station{background:#0E7490;width:32px;height:32px;font-size:16px;}
+  .custom-pin.food{background:var(--purple);}
 
   @media (max-width:480px){
     h1{font-size:17px;}

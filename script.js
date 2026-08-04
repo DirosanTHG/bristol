@@ -1,4 +1,6 @@
 const places = [
+  {n:"Ashton Court Estate — Fiesta Site", cat:"fiesta", lat:51.4437384, lng:-2.6381437, note:"This is it — where the actual Balloon Fiesta happens. Free entry, no tickets needed.", url:"https://www.google.com/maps/place/?q=place_id:ChIJb2CBVquNcUgRo4FMeF8eZAU"},
+  {n:"Bristol Temple Meads Station", cat:"station", lat:51.4497104, lng:-2.5806191, note:"Where your train arrives Saturday and departs Sunday. Shuttle bus to the Fiesta also leaves from here.", url:"https://www.google.com/maps/place/?q=place_id:ChIJQ3WFcgCPcUgRugWR02CH5bA"},
   {n:"Travelodge Bristol Central Mitchell Lane", cat:"hotel", lat:51.4508112, lng:-2.5880765, note:"Your hotel — anchor point for distances.", url:"https://maps.google.com/?cid=743774322461684919"},
 
   // FREE
@@ -45,32 +47,50 @@ const places = [
   {n:"Escape Hunt Bristol", cat:"paid", lat:51.4582552, lng:-2.5856039, note:"Escape room, Cabot Circus.", url:"https://maps.google.com/?cid=4530710530348132217"},
   {n:"Lane7 Bristol", cat:"paid", lat:51.4498009, lng:-2.6019825, note:"Bowling, darts, arcade games.", url:"https://maps.google.com/?cid=10008819465084058501"},
 
+  // FOOD & DRINK
+  {n:"Courtyard Cafe (Ashton Court)", cat:"food", lat:51.4439887, lng:-2.6376261, note:"Right on-site at Ashton Court — good for breakfast before the Fiesta gets going.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ4zwkbmmNcUgRxepS67gAmJw"},
+  {n:"Watershed", cat:"food", lat:51.4517939, lng:-2.5980299, note:"Cafe-bar right on the Harbourside, opens early — good for breakfast or coffee.", url:"https://www.google.com/maps/place/?q=place_id:ChIJb3DVWNaNcUgREEW6As4Hhgc"},
+  {n:"BrewDog Bristol Harbourside", cat:"food", lat:51.4498056, lng:-2.6025028, note:"Bar and food right by Millennium Square.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ8yNtyKuNcUgRf8ktHQePzR8"},
+  {n:"Three Brothers Burgers", cat:"food", lat:51.4522222, lng:-2.5925, note:"Burgers on a moored barge at Welsh Back, near the city centre.", url:"https://www.google.com/maps/place/?q=place_id:ChIJx47Q33iOcUgRXWZozoxqLYI"},
+  {n:"Grain Barge", cat:"food", lat:51.4493978, lng:-2.6123224, note:"Floating pub on Hotwell Rd — roughly on the walking route towards Ashton Court.", url:"https://www.google.com/maps/place/?q=place_id:ChIJVWlxp86NcUgR9ljP_DBpI2s"},
+  {n:"Noah's", cat:"food", lat:51.4475377, lng:-2.620872, note:"Award-winning fish and chips, 4.8 rating — a little off the main path but worth it.", url:"https://www.google.com/maps/place/?q=place_id:ChIJnxXL_AaNcUgR6ZwWScBsoow"},
+  {n:"Pieminister", cat:"food", lat:51.4612151, lng:-2.590562, note:"Bristol pie institution in Stokes Croft — further out, worth the detour if you have time.", url:"https://www.google.com/maps/place/?q=place_id:ChIJJxfXMXiOcUgRfOExKmkNkbU"},
+
   // CHECK FIRST
   {n:"Redcliffe Caves", cat:"check", lat:51.4484039, lng:-2.5922811, note:"Normally closed — only opens for tours/special events.", url:"https://maps.google.com/?cid=11303468765335463586"},
   {n:"Goldney Grotto", cat:"check", lat:51.4519306, lng:-2.6136749, note:"Pre-booked tours only, not a walk-up spot.", url:"https://maps.google.com/?cid=1567860524147698617"},
   {n:"Bristol Harbour Railway", cat:"check", lat:51.4480656, lng:-2.5969843, note:"Runs selected weekends only — check mshed.org first.", url:"https://maps.google.com/?cid=5920646282651720005"},
 ];
 
-const catIcon = { free:"✓", paid:"£", check:"!", hotel:"🎈" };
+const catIcon = {
+  free:"✓",
+  paid:"£",
+  check:"!",
+  hotel:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="6" rx="1.5"/><path d="M3 17v3"/><path d="M21 17v3"/><path d="M5 11V6.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V11"/></svg>',
+  fiesta:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 6 6 6 10c0 3.5 2.3 5.8 4 6.6V18h4v-1.4c1.7-.8 4-3.1 4-6.6 0-4-2-8-6-8z"/><line x1="9" y1="16" x2="7.5" y2="19"/><line x1="15" y1="16" x2="16.5" y2="19"/><rect x="9.5" y="19" width="5" height="3" rx="0.5"/></svg>',
+  station:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="12" rx="3"/><line x1="5" y1="10" x2="19" y2="10"/><circle cx="8.5" cy="18.5" r="1.3" fill="white" stroke="none"/><circle cx="15.5" cy="18.5" r="1.3" fill="white" stroke="none"/><line x1="7" y1="16" x2="5" y2="19"/><line x1="17" y1="16" x2="19" y2="19"/></svg>',
+  food:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="2" x2="7" y2="22"/><line x1="4" y1="2" x2="4" y2="9"/><line x1="10" y1="2" x2="10" y2="9"/><path d="M4 9c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M18 2c-2.2 0-3.5 2.2-3.5 5.5S15.8 13 18 13"/><line x1="18" y1="2" x2="18" y2="22"/></svg>'
+};
 
 function makeIcon(cat){
+  const big = cat==="hotel" || cat==="fiesta" || cat==="station";
   return L.divIcon({
     className:"",
     html:`<div class="custom-pin ${cat}">${catIcon[cat]}</div>`,
-    iconSize: cat==="hotel" ? [32,32] : [26,26],
-    iconAnchor: cat==="hotel" ? [16,16] : [13,13],
+    iconSize: big ? [32,32] : [26,26],
+    iconAnchor: big ? [16,16] : [13,13],
     popupAnchor: [0,-14]
   });
 }
 
 const map = L.map('map', { zoomControl:true }).setView([51.4508, -2.596], 14);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; OpenStreetMap contributors'
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  maxZoom: 20,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 }).addTo(map);
 
-const groups = { free:[], paid:[], check:[], hotel:[] };
-const badgeLabel = { free:"Free", paid:"Paid", check:"Check first", hotel:"Your hotel" };
+const groups = { free:[], paid:[], check:[], hotel:[], fiesta:[], station:[], food:[] };
+const badgeLabel = { free:"Free", paid:"Paid", check:"Check first", hotel:"Your hotel", fiesta:"Fiesta site", station:"Train station", food:"Food & drink" };
 
 places.forEach(p=>{
   const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat) });
@@ -89,6 +109,8 @@ Object.keys(groups).forEach(cat=>{
   layerGroups[cat] = L.layerGroup(groups[cat]);
 });
 
+const ALWAYS_ON = ['hotel','fiesta','station'];
+
 const pills = document.querySelectorAll('.pill');
 pills.forEach(pill=>{
   pill.addEventListener('click', ()=>{
@@ -99,11 +121,10 @@ pills.forEach(pill=>{
       groups[c].forEach(m=>map.removeLayer(m));
     });
     if(cat === 'all'){
-      places.forEach((p,i)=>{});
       Object.keys(groups).forEach(c=>groups[c].forEach(m=>m.addTo(map)));
     } else {
       groups[cat].forEach(m=>m.addTo(map));
-      groups.hotel.forEach(m=>m.addTo(map));
+      ALWAYS_ON.forEach(c=>groups[c].forEach(m=>m.addTo(map)));
     }
   });
 });
