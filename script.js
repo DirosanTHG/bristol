@@ -53,6 +53,10 @@ const places = [
   {n:"Papawcha Bristol & Mahjong Club", cat:"boba", lat:51.4578478, lng:-2.5902127, note:"Bubble tea — also has a mahjong club to sit and play, 4.7\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ9SKOexqPcUgRW4yjw2W4Wjw"},
   {n:"Gong Cha", cat:"boba", lat:51.4573216, lng:-2.5885628, note:"Bubble tea — international chain, spacious, self-order screens.", url:"https://www.google.com/maps/place/?q=place_id:ChIJgfYlFS-PcUgRTgz2Wg78pSQ"},
   {n:"CUPP Cabot Circus", cat:"boba", lat:51.4576744, lng:-2.5865693, note:"Coffee, matcha and boba combo, Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJn4O3_HCOcUgRwNcOqMoc23k"},
+  {n:"Chahalo\u8336\u8bdd\u5f04 - Bristol", cat:"boba", lat:51.4553087, lng:-2.6005284, note:"Bubble tea — authentic Chinese-style tea, no creamer/mass-produced ingredients, 4.7\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJnf45vyiNcUgRMjX0byYnuEU"},
+  {n:"Cha & Chill", cat:"boba", lat:51.4473229, lng:-2.5986136, note:"Bubble tea — family-run, Thai milk teas made with real leaves, Wapping Wharf, 4.9\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJjwrjQPiNcUgRSU54M_Eelwg"},
+  {n:"Kumomo", cat:"boba", lat:51.4554297, lng:-2.6185724, note:"Matcha specialist — widely called the best matcha in Bristol, Clifton, 4.9\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ-0iMHd6NcUgRbvFeAVONJBE"},
+  {n:"Jo's Tea Queen's Road", cat:"boba", lat:51.4563332, lng:-2.6066872, note:"Bubble tea — Bristol-born, extensive menu with seasonal specials, Clifton, 4.4\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJV1XhuYKNcUgRQkBO9C9-Ark"},
 
   // CHECK FIRST
   {n:"Redcliffe Caves", cat:"check", lat:51.4484039, lng:-2.5922811, note:"Normally closed — only opens for tours/special events.", url:"https://maps.google.com/?cid=11303468765335463586"},
@@ -108,6 +112,20 @@ Object.keys(groups).forEach(cat=>{
 });
 
 const ALWAYS_ON = ['hotel','fiesta','station'];
+
+const legendLabel = {
+  free:"Free entry", paid:"Paid attraction", boba:"Bubble tea",
+  check:"Double-check first", fiesta:"Fiesta site", station:"Train station", hotel:"Your hotel"
+};
+const legendOrder = ['free','paid','boba','check','fiesta','station','hotel'];
+
+const legendList = document.getElementById('legendList');
+legendList.innerHTML = legendOrder.map(cat =>
+  `<div class="legend-row">
+     <span class="legend-pin ${cat}">${catIcon[cat]}</span>
+     ${legendLabel[cat]}
+   </div>`
+).join('');
 
 const pills = document.querySelectorAll('.pill');
 pills.forEach(pill=>{

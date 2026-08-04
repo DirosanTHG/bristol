@@ -41,6 +41,7 @@
   .pill.active[data-cat="free"]{color:var(--green);}
   .pill.active[data-cat="paid"]{color:var(--orange);}
   .pill.active[data-cat="check"]{color:var(--amber);}
+  .pill.active[data-cat="boba"]{color:var(--boba);}
   .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;}
 
   #map{flex:1;width:100%;z-index:1;}
@@ -53,8 +54,16 @@
     max-width:190px;
   }
   .legend b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:12.5px;display:block;margin-bottom:4px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);}
-  .legend-row{display:flex;align-items:center;gap:8px;}
-  .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .legend-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
+  .legend-pin{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:10.5px;font-weight:700;}
+  .legend-pin svg{width:12px;height:12px;}
+  .legend-pin.free{background:var(--green);}
+  .legend-pin.paid{background:var(--orange);}
+  .legend-pin.check{background:var(--amber);}
+  .legend-pin.hotel{background:var(--navy);}
+  .legend-pin.fiesta{background:#C1272D;}
+  .legend-pin.station{background:#0E7490;}
+  .legend-pin.boba{background:var(--boba);}
 
   /* Popup styling */
   .leaflet-popup-content-wrapper{border-radius:14px;box-shadow:0 8px 28px rgba(20,40,70,.22);}
