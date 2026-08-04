@@ -4,7 +4,7 @@
     --orange:#E8720C;
     --green:#1E7A34;
     --amber:#B8860B;
-    --purple:#7C3AED;
+    --boba:#9A5B3C;
     --bg:#F1F7FB;
     --card:#FFFFFF;
     --text:#1F2937;
@@ -70,7 +70,7 @@
   .pop-badge.hotel{background:#E7ECF7;color:var(--navy);}
   .pop-badge.fiesta{background:#FBE2E4;color:#C1272D;}
   .pop-badge.station{background:#E1F2F4;color:#0E7490;}
-  .pop-badge.food{background:#F0E9FB;color:var(--purple);}
+  .pop-badge.boba{background:#F1E4DC;color:var(--boba);}
   .pop-note{font-size:12.5px;color:var(--muted);margin:0 0 10px;line-height:1.45;}
   .pop-link{
     display:inline-block;font-size:12.5px;font-weight:600;color:#fff;
@@ -90,7 +90,7 @@
   .custom-pin.hotel{background:var(--navy);width:32px;height:32px;font-size:16px;}
   .custom-pin.fiesta{background:#C1272D;width:32px;height:32px;font-size:16px;}
   .custom-pin.station{background:#0E7490;width:32px;height:32px;font-size:16px;}
-  .custom-pin.food{background:var(--purple);}
+  .custom-pin.boba{background:var(--boba);}
 
   @media (max-width:480px){
     h1{font-size:17px;}

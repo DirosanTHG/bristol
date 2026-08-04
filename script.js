@@ -47,29 +47,12 @@ const places = [
   {n:"Escape Hunt Bristol", cat:"paid", lat:51.4582552, lng:-2.5856039, note:"Escape room, Cabot Circus.", url:"https://maps.google.com/?cid=4530710530348132217"},
   {n:"Lane7 Bristol", cat:"paid", lat:51.4498009, lng:-2.6019825, note:"Bowling, darts, arcade games.", url:"https://maps.google.com/?cid=10008819465084058501"},
 
-  // FOOD & DRINK
-  {n:"Courtyard Cafe (Ashton Court)", cat:"food", lat:51.4439887, lng:-2.6376261, note:"Right on-site at Ashton Court — good for breakfast before the Fiesta gets going.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ4zwkbmmNcUgRxepS67gAmJw"},
-  {n:"Watershed", cat:"food", lat:51.4517939, lng:-2.5980299, note:"Cafe-bar right on the Harbourside, opens early — good for breakfast or coffee.", url:"https://www.google.com/maps/place/?q=place_id:ChIJb3DVWNaNcUgREEW6As4Hhgc"},
-  {n:"Grain Barge", cat:"food", lat:51.4493978, lng:-2.6123224, note:"Floating pub on Hotwell Rd — roughly on the walking route towards Ashton Court.", url:"https://www.google.com/maps/place/?q=place_id:ChIJVWlxp86NcUgR9ljP_DBpI2s"},
-  // FOOD - Breakfast & coffee
-  {n:"Brunel's Buttery", cat:"food", lat:51.447264, lng:-2.6023147, note:"Breakfast — Bristol institution for ~40 years, doorstep bacon/egg sarnies, harbour views.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ2ZxSis2NcUgREIlXBPKd2Fw"},
-  // FOOD - Street food
-  {n:"Cargo Cantina (Wapping Wharf)", cat:"food", lat:51.4473112, lng:-2.5984738, note:"Street food — Mexican tacos, part of the Cargo shipping-container food hub.", url:"https://www.google.com/maps/place/?q=place_id:ChIJHbk3WdSNcUgRLEMDV0NVHoA"},
-  // FOOD - South Indian (Tamil/Kerala)
-  {n:"Crispy Dosa Restaurant", cat:"food", lat:51.4559506, lng:-2.5909096, note:"South Indian — vegetarian, dosas & thalis, closest option to your hotel (~10 min walk).", url:"https://www.google.com/maps/place/?q=place_id:ChIJtdf7jBGPcUgRgDHoMQv7ies"},
-  // FOOD - Italian
-  {n:"RAGÙ", cat:"food", lat:51.4475002, lng:-2.5978857, note:"Italian — sharing plates, Wapping Wharf, reviews rave about the tiramisu.", url:"https://www.google.com/maps/place/?q=place_id:ChIJh99p_wONcUgRQSrrNsPA9U0"},
-  // FOOD - Chains
-  {n:"Nando's (Cabot Circus)", cat:"food", lat:51.4582948, lng:-2.5847688, note:"Chain — reliable, well reviewed.", url:"https://www.google.com/maps/place/?q=place_id:ChIJkW-nxnGOcUgRb7-5tdGXQ20"},
-  // FOOD - Dessert
-  {n:"Creams Cafe", cat:"food", lat:51.453529, lng:-2.5953505, note:"Dessert — proper dessert parlour: waffles, crepes, sundaes, ice cream, cakes all in one place.", url:"https://www.google.com/maps/place/?q=place_id:ChIJXbRgC3iOcUgRljTK5rly2s4"},
-  // FOOD - Bubble tea
-  {n:"Chatime", cat:"food", lat:51.4576288, lng:-2.5916492, note:"Bubble tea — central on Union St, Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJccJqDSiPcUgRB-TwFWWV_fc"},
-  {n:"Bubbleology", cat:"food", lat:51.4587581, lng:-2.5854291, note:"Bubble tea — highest rated of the cluster (4.7\u2605), Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJF15vH9GPcUgRqUJvBwl0pCs"},
-  {n:"Papawcha Bristol & Mahjong Club", cat:"food", lat:51.4578478, lng:-2.5902127, note:"Bubble tea — also has a mahjong club to sit and play, 4.7\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ9SKOexqPcUgRW4yjw2W4Wjw"},
-  {n:"Gong Cha", cat:"food", lat:51.4573216, lng:-2.5885628, note:"Bubble tea — international chain, spacious, self-order screens.", url:"https://www.google.com/maps/place/?q=place_id:ChIJgfYlFS-PcUgRTgz2Wg78pSQ"},
-  {n:"CUPP Cabot Circus", cat:"food", lat:51.4576744, lng:-2.5865693, note:"Coffee, matcha and boba combo, Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJn4O3_HCOcUgRwNcOqMoc23k"},
-  {n:"Nihow Asian Supermarket", cat:"food", lat:51.4533686, lng:-2.5966992, note:"Not bubble tea itself, but an excellent Asian grocery store — snacks, noodles, mochi. 5\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJvWyNpUaNcUgRJrkMCkEVuhI"},
+  // BUBBLE TEA
+  {n:"Chatime", cat:"boba", lat:51.4576288, lng:-2.5916492, note:"Bubble tea — central on Union St, Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJccJqDSiPcUgRB-TwFWWV_fc"},
+  {n:"Bubbleology", cat:"boba", lat:51.4587581, lng:-2.5854291, note:"Bubble tea — highest rated of the cluster (4.7\u2605), Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJF15vH9GPcUgRqUJvBwl0pCs"},
+  {n:"Papawcha Bristol & Mahjong Club", cat:"boba", lat:51.4578478, lng:-2.5902127, note:"Bubble tea — also has a mahjong club to sit and play, 4.7\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ9SKOexqPcUgRW4yjw2W4Wjw"},
+  {n:"Gong Cha", cat:"boba", lat:51.4573216, lng:-2.5885628, note:"Bubble tea — international chain, spacious, self-order screens.", url:"https://www.google.com/maps/place/?q=place_id:ChIJgfYlFS-PcUgRTgz2Wg78pSQ"},
+  {n:"CUPP Cabot Circus", cat:"boba", lat:51.4576744, lng:-2.5865693, note:"Coffee, matcha and boba combo, Broadmead.", url:"https://www.google.com/maps/place/?q=place_id:ChIJn4O3_HCOcUgRwNcOqMoc23k"},
 
   // CHECK FIRST
   {n:"Redcliffe Caves", cat:"check", lat:51.4484039, lng:-2.5922811, note:"Normally closed — only opens for tours/special events.", url:"https://maps.google.com/?cid=11303468765335463586"},
@@ -84,7 +67,7 @@ const catIcon = {
   hotel:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="6" rx="1.5"/><path d="M3 17v3"/><path d="M21 17v3"/><path d="M5 11V6.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V11"/></svg>',
   fiesta:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 6 6 6 10c0 3.5 2.3 5.8 4 6.6V18h4v-1.4c1.7-.8 4-3.1 4-6.6 0-4-2-8-6-8z"/><line x1="9" y1="16" x2="7.5" y2="19"/><line x1="15" y1="16" x2="16.5" y2="19"/><rect x="9.5" y="19" width="5" height="3" rx="0.5"/></svg>',
   station:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="12" rx="3"/><line x1="5" y1="10" x2="19" y2="10"/><circle cx="8.5" cy="18.5" r="1.3" fill="white" stroke="none"/><circle cx="15.5" cy="18.5" r="1.3" fill="white" stroke="none"/><line x1="7" y1="16" x2="5" y2="19"/><line x1="17" y1="16" x2="19" y2="19"/></svg>',
-  food:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="2" x2="7" y2="22"/><line x1="4" y1="2" x2="4" y2="9"/><line x1="10" y1="2" x2="10" y2="9"/><path d="M4 9c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M18 2c-2.2 0-3.5 2.2-3.5 5.5S15.8 13 18 13"/><line x1="18" y1="2" x2="18" y2="22"/></svg>'
+  boba:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="7"/><line x1="10" y1="2" x2="14" y2="2"/><path d="M7 7h10l-1.3 12.3a2 2 0 0 1-2 1.7h-3.4a2 2 0 0 1-2-1.7L7 7z"/><circle cx="9.7" cy="14" r="0.9" fill="white" stroke="none"/><circle cx="12.3" cy="16.3" r="0.9" fill="white" stroke="none"/><circle cx="14.6" cy="13.5" r="0.9" fill="white" stroke="none"/></svg>'
 };
 
 function makeIcon(cat){
@@ -104,8 +87,8 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 }).addTo(map);
 
-const groups = { free:[], paid:[], check:[], hotel:[], fiesta:[], station:[], food:[] };
-const badgeLabel = { free:"Free", paid:"Paid", check:"Double-check", hotel:"Your hotel", fiesta:"Fiesta site", station:"Train station", food:"Food & drink" };
+const groups = { free:[], paid:[], check:[], hotel:[], fiesta:[], station:[], boba:[] };
+const badgeLabel = { free:"Free", paid:"Paid", check:"Double-check", hotel:"Your hotel", fiesta:"Fiesta site", station:"Train station", boba:"Bubble tea" };
 
 places.forEach(p=>{
   const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat) });
