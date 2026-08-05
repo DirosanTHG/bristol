@@ -33,6 +33,13 @@
   .balloon{display:inline-block;transform:translateY(1px);}
   .subtitle{font-size:12.5px;color:#C9D6E8;margin:2px 0 10px;font-weight:500;}
   .filters{display:flex;gap:6px;flex-wrap:wrap;}
+  .surprise-pill{
+    margin-top:8px;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;
+    background:var(--orange);border:none;color:#fff;border-radius:999px;
+    padding:7px 14px;cursor:pointer;transition:opacity .15s ease;
+  }
+  .surprise-pill:hover{opacity:.88;}
+  .surprise-pill:active{transform:scale(0.97);}
   .pill{
     font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
     border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);
@@ -62,6 +69,7 @@
   .legend-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
   .legend-pin{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:10.5px;font-weight:700;}
   .legend-line{width:20px;height:0;border-top:3px dotted var(--navy);flex-shrink:0;}
+  .legend-line.bus{border-top:3px dotted var(--orange);}
   .legend-pin svg{width:12px;height:12px;}
   .legend-pin.free{background:var(--green);}
   .legend-pin.paid{background:var(--orange);}
@@ -101,11 +109,26 @@
   }
   .pop-link:hover{opacity:.9;}
 
+  .visit-toggle{
+    display:block;margin-top:8px;font-size:12px;font-weight:600;
+    background:none;border:1.5px solid var(--line);color:var(--muted);
+    padding:5px 10px;border-radius:8px;cursor:pointer;width:100%;
+  }
+  .visit-toggle.is-visited{background:#E7F5EB;border-color:var(--green);color:var(--green);}
+  .visit-toggle:hover{border-color:var(--navy);}
+
   .custom-pin{
     width:26px;height:26px;border-radius:50%;border:2.5px solid #fff;
     box-shadow:0 2px 6px rgba(0,0,0,.35);
     display:flex;align-items:center;justify-content:center;
-    font-size:13px;color:#fff;
+    font-size:13px;color:#fff;position:relative;
+  }
+  .custom-pin.visited{opacity:0.45;filter:grayscale(35%);}
+  .visited-badge{
+    position:absolute;top:-6px;right:-6px;width:15px;height:15px;border-radius:50%;
+    background:var(--green);border:2px solid #fff;color:#fff;font-size:9px;
+    display:flex;align-items:center;justify-content:center;font-weight:700;
+    box-shadow:0 1px 3px rgba(0,0,0,.3);
   }
   .custom-pin.free{background:var(--green);}
   .custom-pin.paid{background:var(--orange);}

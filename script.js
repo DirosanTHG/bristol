@@ -1,5 +1,5 @@
 const places = [
-  {n:"Ashton Court Estate — Fiesta Site", cat:"fiesta", lat:51.4437384, lng:-2.6381437, note:"~58 min walk. This is it — where the actual Balloon Fiesta happens. Free entry, no tickets needed.", url:"https://www.google.com/maps/place/?q=place_id:ChIJb2CBVquNcUgRo4FMeF8eZAU"},
+  {n:"Ashton Court Estate — Fiesta Site", cat:"fiesta", lat:51.4437384, lng:-2.6381437, note:"~58 min walk. This is it — where the actual Balloon Fiesta happens. Free entry, no tickets needed. Shuttle bus drops off here too, near pedestrian Gate 3.", url:"https://www.google.com/maps/place/?q=place_id:ChIJb2CBVquNcUgRo4FMeF8eZAU"},
   {n:"Bristol Temple Meads Station", cat:"station", lat:51.4497104, lng:-2.5806191, note:"~9 min walk. Where your train arrives Saturday and departs Sunday. Shuttle bus to the Fiesta also leaves from here.", url:"https://www.google.com/maps/place/?q=place_id:ChIJQ3WFcgCPcUgRugWR02CH5bA"},
   {n:"Travelodge Bristol Central Mitchell Lane", cat:"hotel", lat:51.4508112, lng:-2.5880765, note:"Your hotel — anchor point for distances.", url:"https://maps.google.com/?cid=743774322461684919"},
 
@@ -21,7 +21,7 @@ const places = [
   {n:"Banksy Walk Bristol", cat:"free", lat:51.4555704, lng:-2.6064919, note:"~22 min walk. Free self-guided street art spot near Berkeley Square.", url:"https://maps.google.com/?cid=14919491036703569586"},
   {n:"Castle Park", cat:"free", lat:51.4558253, lng:-2.5880581, note:"~9 min walk. Free riverside park with church ruins.", url:"https://maps.google.com/?cid=15615145335287111975"},
   {n:"Millennium Square", cat:"free", lat:51.449795, lng:-2.6004516, note:"~14 min walk. Free public square, fountains and sculptures.", url:"https://maps.google.com/?cid=727230243578170860"},
-  {n:"Queen Square", cat:"free", lat:51.4511825, lng:-2.594571, note:"~7 min walk. Free elegant Regency square with lawns.", url:"https://maps.google.com/?cid=1054754534944787718"},
+  {n:"Queen Square", cat:"free", lat:51.4511825, lng:-2.594571, note:"~7 min walk. Free elegant Regency square with lawns. Also the shuttle bus stop (Prince St, Stop Q2), ~10 min after it leaves Temple Meads.", url:"https://maps.google.com/?cid=1054754534944787718"},
   {n:"The Centre", cat:"free", lat:51.4532218, lng:-2.5974609, note:"~11 min walk. Free riverside concourse, food stalls nearby.", url:"https://maps.google.com/?cid=5889288656463484825"},
   {n:"Round Pool", cat:"free", lat:51.455569, lng:-2.5890358, note:"~9 min walk. Free small water feature, part of Castle Park area.", url:"https://maps.google.com/?cid=11099603669790705864"},
   {n:"Clifton Down", cat:"free", lat:51.461429, lng:-2.6250424, note:"~46 min walk. Free rolling green downs with river views.", url:"https://maps.google.com/?cid=6554923641144562287"},
@@ -107,16 +107,22 @@ const catIcon = {
   cafe:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M8 21h8l-1-6H9l-1 6z"/></svg>'
 };
 
-function makeIcon(cat){
+function makeIcon(cat, isVisited){
   const big = cat==="hotel" || cat==="fiesta" || cat==="station";
+  const visitedClass = isVisited ? ' visited' : '';
+  const badge = isVisited ? '<span class="visited-badge">&#10003;</span>' : '';
   return L.divIcon({
     className:"",
-    html:`<div class="custom-pin ${cat}">${catIcon[cat]}</div>`,
+    html:`<div class="custom-pin ${cat}${visitedClass}">${catIcon[cat]}${badge}</div>`,
     iconSize: big ? [32,32] : [26,26],
     iconAnchor: big ? [16,16] : [13,13],
     popupAnchor: [0,-14]
   });
 }
+
+const VISITED_KEY = 'bristolTripVisited';
+let visited = new Set(JSON.parse(localStorage.getItem(VISITED_KEY) || '[]'));
+function saveVisited(){ localStorage.setItem(VISITED_KEY, JSON.stringify([...visited])); }
 
 const map = L.map('map', { zoomControl:true }).setView([51.4508, -2.596], 14);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -129,20 +135,46 @@ L.polyline(festivalWayRoute, {
   color:'#1B3B6F', weight:5, opacity:0.85, dashArray:'10,8', lineCap:'round'
 }).addTo(map).bindPopup('<p class="pop-name">Festival Way (Route 33)</p><p class="pop-note">Temple Meads &rarr; Queens Square &rarr; Cumberland Road &rarr; across the River Avon &rarr; Kennel Lodge Road &rarr; Ashton Court. Flat, traffic-free, ~45-60 min. Confirmed against the official Fiesta site, 7-9 Aug 2026.</p>');
 
+const shuttleBusRoute = [[51.44955,-2.58116],[51.44939,-2.58117],[51.44919,-2.58149],[51.44909,-2.58174],[51.44904,-2.58218],[51.44899,-2.58251],[51.44881,-2.58295],[51.44867,-2.58310],[51.44856,-2.58333],[51.44841,-2.58365],[51.44864,-2.58409],[51.44873,-2.58426],[51.44879,-2.58451],[51.44882,-2.58477],[51.44884,-2.58499],[51.44889,-2.58551],[51.44891,-2.58573],[51.44892,-2.58595],[51.44895,-2.58640],[51.44895,-2.58670],[51.44889,-2.58736],[51.44885,-2.58789],[51.44882,-2.58825],[51.44877,-2.58890],[51.44876,-2.58927],[51.44878,-2.58954],[51.44881,-2.58981],[51.44880,-2.59003],[51.44874,-2.59025],[51.44879,-2.59051],[51.44895,-2.59065],[51.44912,-2.59080],[51.44924,-2.59097],[51.44934,-2.59131],[51.44941,-2.59164],[51.44952,-2.59247],[51.44954,-2.59275],[51.44968,-2.59282],[51.45038,-2.59276],[51.45052,-2.59276],[51.45096,-2.59273],[51.45158,-2.59274],[51.45162,-2.59329],[51.45155,-2.59388],[51.45143,-2.59473],[51.45120,-2.59485],[51.45119,-2.59458],[51.45112,-2.59344],[51.45043,-2.59358],[51.45038,-2.59276],[51.44968,-2.59282],[51.44954,-2.59275],[51.44952,-2.59247],[51.44941,-2.59164],[51.44937,-2.59137],[51.44937,-2.59113],[51.44930,-2.59090],[51.44923,-2.59069],[51.44921,-2.59044],[51.44923,-2.59022],[51.44916,-2.59001],[51.44900,-2.58991],[51.44883,-2.58998],[51.44873,-2.59015],[51.44858,-2.59030],[51.44839,-2.59036],[51.44813,-2.59041],[51.44779,-2.59050],[51.44748,-2.59057],[51.44729,-2.59063],[51.44701,-2.59071],[51.44668,-2.59078],[51.44640,-2.59083],[51.44624,-2.59085],[51.44602,-2.59084],[51.44588,-2.59069],[51.44576,-2.59059],[51.44540,-2.59075],[51.44524,-2.59118],[51.44516,-2.59142],[51.44517,-2.59167],[51.44529,-2.59180],[51.44546,-2.59193],[51.44553,-2.59213],[51.44562,-2.59259],[51.44563,-2.59293],[51.44564,-2.59326],[51.44564,-2.59360],[51.44562,-2.59382],[51.44553,-2.59540],[51.44551,-2.59564],[51.44551,-2.59600],[51.44548,-2.59628],[51.44543,-2.59690],[51.44539,-2.59770],[51.44539,-2.59809],[51.44540,-2.59856],[51.44544,-2.59893],[51.44550,-2.59924],[51.44558,-2.59964],[51.44564,-2.59994],[51.44581,-2.60093],[51.44598,-2.60195],[51.44611,-2.60278],[51.44619,-2.60352],[51.44625,-2.60422],[51.44631,-2.60512],[51.44629,-2.60587],[51.44619,-2.60744],[51.44612,-2.60845],[51.44610,-2.60871],[51.44597,-2.61010],[51.44584,-2.61156],[51.44576,-2.61258],[51.44571,-2.61307],[51.44565,-2.61365],[51.44561,-2.61389],[51.44558,-2.61413],[51.44553,-2.61434],[51.44546,-2.61460],[51.44538,-2.61483],[51.44516,-2.61537],[51.44496,-2.61575],[51.44472,-2.61606],[51.44454,-2.61627],[51.44442,-2.61639],[51.44434,-2.61663],[51.44434,-2.61685],[51.44434,-2.61793],[51.44432,-2.61816],[51.44431,-2.61852],[51.44432,-2.61913],[51.44432,-2.61943],[51.44428,-2.61976],[51.44427,-2.61999],[51.44427,-2.62051],[51.44423,-2.62135],[51.44420,-2.62158],[51.44412,-2.62186],[51.44402,-2.62204],[51.44385,-2.62222],[51.44337,-2.62257],[51.44315,-2.62278],[51.44212,-2.62353],[51.44161,-2.62387],[51.44144,-2.62402],[51.44131,-2.62418],[51.44103,-2.62437],[51.44088,-2.62446],[51.44076,-2.62468],[51.44071,-2.62489],[51.44070,-2.62517],[51.44069,-2.62541],[51.44064,-2.62651],[51.44068,-2.62682],[51.44077,-2.62698],[51.44105,-2.62724],[51.44121,-2.62736],[51.44138,-2.62743],[51.44160,-2.62738],[51.44187,-2.62749],[51.44225,-2.62789],[51.44277,-2.62841],[51.44290,-2.62852],[51.44303,-2.62861],[51.44310,-2.62889],[51.44333,-2.62934],[51.44354,-2.62974],[51.44363,-2.62993],[51.44376,-2.63026],[51.44383,-2.63048],[51.44391,-2.63073],[51.44403,-2.63098],[51.44413,-2.63123],[51.44427,-2.63163],[51.44433,-2.63191],[51.44437,-2.63216],[51.44438,-2.63256],[51.44435,-2.63314],[51.44436,-2.63343],[51.44441,-2.63367],[51.44476,-2.63470],[51.44482,-2.63495],[51.44495,-2.63560],[51.44501,-2.63583],[51.44520,-2.63602],[51.44528,-2.63622],[51.44503,-2.63653],[51.44486,-2.63674],[51.44470,-2.63699],[51.44460,-2.63721],[51.44447,-2.63726],[51.44434,-2.63708],[51.44434,-2.63708]];
+L.polyline(shuttleBusRoute, {
+  color:'#E8720C', weight:4, opacity:0.75, dashArray:'2,10', lineCap:'round'
+}).addTo(map).bindPopup('<p class="pop-name">Stagecoach Shuttle Bus</p><p class="pop-note">Temple Meads &rarr; Queen Square (Prince St, Stop Q2, ~10 min later) &rarr; Ashton Court (drop-off near pedestrian Gate 3). Runs 10:00am daily. Adult 1-Day £8, Child £5, Group(5) £22. Book ahead - link below.</p><a class="pop-link" href="https://www.bristolballoonfiesta.co.uk/shuttle-bus-tickets" rel="noopener">Buy tickets →</a>');
+
 const groups = { free:[], paid:[], check:[], hotel:[], fiesta:[], station:[], boba:[], breakfast:[], meal:[], dessert:[], cafe:[] };
 const badgeLabel = { free:"Free", paid:"Paid", check:"Double-check", hotel:"Your hotel", fiesta:"Fiesta site", station:"Train station", boba:"Bubble tea", breakfast:"Breakfast", meal:"Lunch/Dinner", dessert:"Dessert", cafe:"Cafe" };
 
-places.forEach(p=>{
-  const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat) });
-  marker.bindPopup(
-    `<p class="pop-name">${p.n}</p>
+function popupHtml(p){
+  const isV = visited.has(p.n);
+  return `<p class="pop-name">${p.n}</p>
      <span class="pop-badge ${p.cat}">${badgeLabel[p.cat]}</span>
      <p class="pop-note">${p.note}</p>
-     <a class="pop-link" href="${p.url}" rel="noopener">Open in Google Maps →</a>`
-  );
+     <a class="pop-link" href="${p.url}" rel="noopener">Open in Google Maps &rarr;</a>
+     <button class="visit-toggle${isV ? ' is-visited' : ''}" onclick="toggleVisited('${p.n.replace(/'/g,"\\'")}')">${isV ? '&#10003; Visited \u2014 tap to undo' : 'Mark as visited'}</button>`;
+}
+
+const markersByName = {};
+
+places.forEach(p=>{
+  const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat, visited.has(p.n)) });
+  marker.bindPopup(popupHtml(p));
   groups[p.cat].push(marker);
+  markersByName[p.n] = marker;
   marker.addTo(map);
 });
+
+window.toggleVisited = function(name){
+  if (visited.has(name)) { visited.delete(name); } else { visited.add(name); }
+  saveVisited();
+  const p = places.find(pl => pl.n === name);
+  const marker = markersByName[name];
+  marker.setIcon(makeIcon(p.cat, visited.has(name)));
+  const btn = document.querySelector('.leaflet-popup-content .visit-toggle');
+  if (btn) {
+    const isV = visited.has(name);
+    btn.classList.toggle('is-visited', isV);
+    btn.innerHTML = isV ? '&#10003; Visited \u2014 tap to undo' : 'Mark as visited';
+  }
+};
 
 const layerGroups = {};
 Object.keys(groups).forEach(cat=>{
@@ -164,7 +196,7 @@ legendList.innerHTML = legendOrder.map(cat =>
      <span class="legend-pin ${cat}">${catIcon[cat]}</span>
      ${legendLabel[cat]}
    </div>`
-).join('') + `<div class="legend-row"><span class="legend-line"></span>Festival Way (walking route)</div>`;
+).join('') + `<div class="legend-row"><span class="legend-line"></span>Festival Way (walking route)</div>` + `<div class="legend-row"><span class="legend-line bus"></span>Shuttle Bus route</div>`;
 
 // Some filter pills expand to multiple underlying categories
 const filterGroups = { food: ['breakfast','meal','dessert','cafe'] };
@@ -192,3 +224,13 @@ pills.forEach(pill=>{
 const legendBox = document.querySelector('.legend');
 map.on('popupopen', () => { legendBox.style.display = 'none'; });
 map.on('popupclose', () => { legendBox.style.display = ''; });
+
+// Surprise Me - picks a random food/drink spot and jumps to it
+const FOOD_CATS = ['breakfast','meal','dessert','cafe','boba'];
+document.getElementById('surpriseBtn').addEventListener('click', () => {
+  const foodPlaces = places.filter(p => FOOD_CATS.includes(p.cat));
+  const pick = foodPlaces[Math.floor(Math.random() * foodPlaces.length)];
+  map.closePopup();
+  map.setView([pick.lat, pick.lng], 16);
+  setTimeout(() => markersByName[pick.n].openPopup(), 450);
+});
