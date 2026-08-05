@@ -5,6 +5,10 @@
     --green:#1E7A34;
     --amber:#B8860B;
     --boba:#9A5B3C;
+    --breakfast:#EAB308;
+    --meal:#7C3AED;
+    --dessert:#EC4899;
+    --cafe:#5B8266;
     --bg:#F1F7FB;
     --card:#FFFFFF;
     --text:#1F2937;
@@ -42,6 +46,7 @@
   .pill.active[data-cat="paid"]{color:var(--orange);}
   .pill.active[data-cat="check"]{color:var(--amber);}
   .pill.active[data-cat="boba"]{color:var(--boba);}
+  .pill.active[data-cat="food"]{color:var(--meal);}
   .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;}
 
   #map{flex:1;width:100%;z-index:1;}
@@ -56,6 +61,7 @@
   .legend b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:12.5px;display:block;margin-bottom:4px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);}
   .legend-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
   .legend-pin{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:10.5px;font-weight:700;}
+  .legend-line{width:20px;height:0;border-top:3px dotted var(--navy);flex-shrink:0;}
   .legend-pin svg{width:12px;height:12px;}
   .legend-pin.free{background:var(--green);}
   .legend-pin.paid{background:var(--orange);}
@@ -64,6 +70,10 @@
   .legend-pin.fiesta{background:#C1272D;}
   .legend-pin.station{background:#0E7490;}
   .legend-pin.boba{background:var(--boba);}
+  .legend-pin.breakfast{background:var(--breakfast);}
+  .legend-pin.meal{background:var(--meal);}
+  .legend-pin.dessert{background:var(--dessert);}
+  .legend-pin.cafe{background:var(--cafe);}
 
   /* Popup styling */
   .leaflet-popup-content-wrapper{border-radius:14px;box-shadow:0 8px 28px rgba(20,40,70,.22);}
@@ -80,6 +90,10 @@
   .pop-badge.fiesta{background:#FBE2E4;color:#C1272D;}
   .pop-badge.station{background:#E1F2F4;color:#0E7490;}
   .pop-badge.boba{background:#F1E4DC;color:var(--boba);}
+  .pop-badge.breakfast{background:#FEF3C7;color:#92720A;}
+  .pop-badge.meal{background:#F0E9FB;color:var(--meal);}
+  .pop-badge.dessert{background:#FCE7F3;color:#BE185D;}
+  .pop-badge.cafe{background:#E7EEE9;color:var(--cafe);}
   .pop-note{font-size:12.5px;color:var(--muted);margin:0 0 10px;line-height:1.45;}
   .pop-link{
     display:inline-block;font-size:12.5px;font-weight:600;color:#fff;
@@ -100,6 +114,10 @@
   .custom-pin.fiesta{background:#C1272D;width:32px;height:32px;font-size:16px;}
   .custom-pin.station{background:#0E7490;width:32px;height:32px;font-size:16px;}
   .custom-pin.boba{background:var(--boba);}
+  .custom-pin.breakfast{background:var(--breakfast);}
+  .custom-pin.meal{background:var(--meal);}
+  .custom-pin.dessert{background:var(--dessert);}
+  .custom-pin.cafe{background:var(--cafe);}
 
   @media (max-width:480px){
     h1{font-size:17px;}
