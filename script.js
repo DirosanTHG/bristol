@@ -182,3 +182,8 @@ pills.forEach(pill=>{
     }
   });
 });
+
+// Prevent the Key box from ever overlapping/blocking a popup's tappable content
+const legendBox = document.querySelector('.legend');
+map.on('popupopen', () => { legendBox.style.display = 'none'; });
+map.on('popupclose', () => { legendBox.style.display = ''; });
