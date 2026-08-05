@@ -67,6 +67,11 @@ const places = [
   {n:"Pizzarova", cat:"meal", lat:51.4532536, lng:-2.6009268, note:"~15 min walk (Park St). Walk-ins fine, short wait possible at lunch rush. 4.6\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJTRJJqW2NcUgRZM5ARTe4LYc"},
   {n:"Omar's Kitchen", cat:"meal", lat:51.4824654, lng:-2.5866625, note:"~57 min walk (~2.5 miles, Bishopston — bus/taxi territory). Fri\u2013Sun only, no booking. 4.8\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJVzAMLrqPcUgRS9LmRBzcT9Q"},
   {n:"Izakaya x Yakiniku", cat:"meal", lat:51.4524664, lng:-2.5989806, note:"~13 min walk (College Green). Booking recommended — reviews say it gets busy. 4.5\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJq2l1BNeNcUgRLHNYMZdfu_o"},
+  {n:"Crispy Dosa Restaurant", cat:"meal", lat:51.4559506, lng:-2.5909096, note:"~10 min walk (closest South Indian option). Vegetarian, dosas & thalis, walk-in, no booking needed.", url:"https://www.google.com/maps/place/?q=place_id:ChIJtdf7jBGPcUgRgDHoMQv7ies"},
+  {n:"Krishna's Inn", cat:"meal", lat:51.4559778, lng:-2.6073858, note:"~20 min walk (The Triangle). Genuinely Keralan specialities, walk-in.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ78SkydqNcUgRWxl013sXEYk"},
+  {n:"Kal Dosa", cat:"meal", lat:51.4712847, lng:-2.5930996, note:"~24 min walk (Gloucester Rd, Bishopston). Highest-rated South Indian here, 4.8\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJp--LJj-PcUgRzrKbderJV8I"},
+  {n:"Hotwells Eatery", cat:"meal", lat:51.4511341, lng:-2.6077048, note:"~22 min walk (Hotwells). Indian, 5.0\u2605 (223 reviews) — reviews call the biryani the best in the UK. Small and popular, booking recommended for evenings.", url:"https://www.google.com/maps/place/?q=place_id:ChIJJwISk4CNcUgRKVzy_aBlaS8"},
+  {n:"Haveli The Yard", cat:"meal", lat:51.4571948, lng:-2.5969261, note:"~15 min walk (Upper Maudlin St). Halal Pakistani/Afghani/Indian, 4.6\u2605 (937 reviews) — tawa platters, no alcohol (mocktail bar instead). Booking recommended for groups.", url:"https://www.google.com/maps/place/?q=place_id:ChIJ3dZRFoGNcUgRvYiifTj885k"},
 
   // DESSERT
   {n:"The Pancake Man", cat:"dessert", lat:51.447214, lng:-2.5988015, note:"~14 min walk (Wapping Wharf). Casual walk-up, no booking. Gluten-free waffles, 4.9\u2605.", url:"https://www.google.com/maps/place/?q=place_id:ChIJHR8CQbXncUgRon4H6XqfSjY"},
@@ -133,7 +138,7 @@ places.forEach(p=>{
     `<p class="pop-name">${p.n}</p>
      <span class="pop-badge ${p.cat}">${badgeLabel[p.cat]}</span>
      <p class="pop-note">${p.note}</p>
-     <a class="pop-link" href="${p.url}" target="_blank" rel="noopener">Open in Google Maps →</a>`
+     <a class="pop-link" href="${p.url}" rel="noopener">Open in Google Maps →</a>`
   );
   groups[p.cat].push(marker);
   marker.addTo(map);
